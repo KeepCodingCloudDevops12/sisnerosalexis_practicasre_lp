@@ -68,4 +68,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/alesisneros14/SisnerosAlexis_practicaSRE_lp:${{ steps.commit.outputs.short }}
+          tags: ghcr.io/alesisneros14/sisnerosalexis_practicasre_lp:${{ steps.commit.outputs.short }}
