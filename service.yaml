@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: simple-server-service
+  labels:
+    app: simple-server # Etiqueta para que el ServiceMonitor de Prometheus lo encuentre
+spec:
+  selector:
+    app: simple-server # Busca los Pods que tengan esta etiqueta
+  ports:
+    - name: api
+      port: 8081
+      targetPort: 8081
+    - name: metrics # Le damos un nombre al puerto de métricas
+      port: 8000
+      targetPort: 8000

@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-server-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: simple-server
+  template:
+    metadata:
+      labels:
+        app: simple-server
+    spec:
+      # Le decimos al pod que use estas credenciales para descargar la imagen
+      imagePullSecrets:
+      - name: ghcr-creds
+      
+      containers:
+      - name: simple-server
+        image: ghcr.io/KeepCodingCloudDevops12/SisnerosAlexis_practicaSRE_lp:HASH_VALIDO
+        ports:
+        - containerPort: 8081
+          name: api
+        - containerPort: 8000
+          name: metrics
+        resources:
+          requests:
+            cpu: "100m"
+          limits:
+            cpu: "200m"
